@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Card2({title, icon, pic, rate, count}) {
+export default function Card2({title, icon, pic, rate, count, color, bg}) {
   return (
     <Container>
         <Wrapper>
             <Up>
                 <h3>{title}</h3>
-                <img src={pic} alt="" />
+                <Img bg={bg}src={pic} alt="" />
             </Up>
             <Down>
                 <h2>{count}</h2>
                 <Icon>
                     <img src={icon} alt="" />
-                    <span>{rate}</span>
+                    <Rate color={color}>{rate}</Rate>
                 </Icon>
             </Down>
         </Wrapper>
@@ -41,10 +41,6 @@ const Up = styled.div`
     justify-content: space-between;
     width: 260px;
     align-items: center;
-    img{
-        width: 25px;
-        height: 25px;
-    }
     h3{
         color:  #2f3847;
     }
@@ -68,7 +64,15 @@ const Icon = styled.div`
             object-fit: contain;
             margin-right: 8px;
     }
-    span{
-        color: #27C99F;
-    }
+`;
+
+const Rate = styled.div`
+    color: ${({color}) => color};
+`;
+
+
+const Img = styled.img`
+    background-color: ${({bg}) => bg};
+    width: 25px;
+    height: 25px;
 `;

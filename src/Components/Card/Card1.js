@@ -2,18 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-export default function Card1({username, pic, icon, title, count, result, color}) {
+export default function Card1({username, pic, icon, title, count, result, color, col, bg}) {
   return (
-      <Container>
+      <Container color={color}>
         <Icon>
-          <Img src={pic}/>
+          <Img bg={bg} src={pic}/>
           <p>{username}</p>
         </Icon>
         <h1>{count}</h1>
         <h3>{title}</h3>
         <Icon2>
           <Img2 src={icon}/>
-          <p color={color}>{result}</p>
+          <Day col={col}>{result}</Day>
         </Icon2>
       </Container>
   )
@@ -27,7 +27,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top: 4px solid red;
+  border-top: 4px solid ${({color}) => color};
   border-radius: 8px;
 
   h1{
@@ -47,6 +47,7 @@ const Img = styled.img`
   width: 20px;
   height: 20px;
   object-fit: cover;
+  background-color: ${({bg}) => bg};
 `;
 
 const Img2 = styled.img`
@@ -75,7 +76,9 @@ const Icon2 = styled.div`
   height: 20px;
   justify-content: space-between;
   margin-bottom: 40px;
-   p{
-     color: ${({color}) => color};
-   }
+`;
+
+
+const Day = styled.p`
+  color: ${({col}) => col};
 `;
